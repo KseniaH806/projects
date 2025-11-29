@@ -1,8 +1,8 @@
 /* 
-   Project: Mall Customers – SQL Analysis (Task 0–10)
+   Project: Mall Customers â€“ SQL Analysis (Task 0â€“10)
    Description:
      Analytical SQL tasks based on the Mall Customers dataset.
-     Tasks 1–10 = analysis queries that can be run repeatedly.
+     Tasks 1â€“10 = analysis queries that can be run repeatedly.
 */
 
 
@@ -41,7 +41,7 @@ FROM dbo.mall_customers;
 
 
 /*
-   TASK 3: Customers aged 18–25
+   TASK 3: Customers aged 18â€“25
    Purpose:
      Extract the youngest adult customer segment.
 */
@@ -88,9 +88,9 @@ GROUP BY Genre;
    Purpose:
      Assign each customer to one of four segments based on
      income and spending score:
-       - High income · High spending
-       - High income · Low spending
-       - Low income · High spending
+       - High income Â· High spending
+       - High income Â· Low spending
+       - Low income Â· High spending
        - Mid segment (everyone else)
 */
 
@@ -101,9 +101,9 @@ SELECT
     AnnualIncome,
     SpendingScore,
     CASE
-        WHEN AnnualIncome >= 70 AND SpendingScore >= 70 THEN 'High income · High spending'
-        WHEN AnnualIncome >= 70 AND SpendingScore < 40  THEN 'High income · Low spending'
-        WHEN AnnualIncome <  40 AND SpendingScore >= 70 THEN 'Low income · High spending'
+        WHEN AnnualIncome >= 70 AND SpendingScore >= 70 THEN 'High income Â· High spending'
+        WHEN AnnualIncome >= 70 AND SpendingScore < 40  THEN 'High income Â· Low spending'
+        WHEN AnnualIncome <  40 AND SpendingScore >= 70 THEN 'Low income Â· High spending'
         ELSE 'Mid segment'
     END AS CustomerSegment
 FROM dbo.mall_customers;
@@ -127,9 +127,9 @@ SELECT
 FROM (
     SELECT
         CASE
-            WHEN AnnualIncome >= 70 AND SpendingScore >= 70 THEN 'High income · High spending'
-            WHEN AnnualIncome >= 70 AND SpendingScore < 40  THEN 'High income · Low spending'
-            WHEN AnnualIncome <  40 AND SpendingScore >= 70 THEN 'Low income · High spending'
+            WHEN AnnualIncome >= 70 AND SpendingScore >= 70 THEN 'High income Â· High spending'
+            WHEN AnnualIncome >= 70 AND SpendingScore < 40  THEN 'High income Â· Low spending'
+            WHEN AnnualIncome <  40 AND SpendingScore >= 70 THEN 'Low income Â· High spending'
             ELSE 'Mid segment'
         END AS CustomerSegment,
         AnnualIncome,
@@ -147,17 +147,17 @@ ORDER BY CustomersCount DESC;
      Group customers into age buckets and calculate the
      number of customers and average spending score per group.
      Age groups:
-       - 18–25
-       - 26–40
-       - 41–55
+       - 18â€“25
+       - 26â€“40
+       - 41â€“55
        - 56+
 */
 
 SELECT
     CASE
-        WHEN Age BETWEEN 18 AND 25 THEN '18–25'
-        WHEN Age BETWEEN 26 AND 40 THEN '26–40'
-        WHEN Age BETWEEN 41 AND 55 THEN '41–55'
+        WHEN Age BETWEEN 18 AND 25 THEN '18â€“25'
+        WHEN Age BETWEEN 26 AND 40 THEN '26â€“40'
+        WHEN Age BETWEEN 41 AND 55 THEN '41â€“55'
         ELSE '56+'
     END AS AgeGroup,
     COUNT(*)             AS CustomersCount,
@@ -165,9 +165,9 @@ SELECT
 FROM dbo.mall_customers
 GROUP BY
     CASE
-        WHEN Age BETWEEN 18 AND 25 THEN '18–25'
-        WHEN Age BETWEEN 26 AND 40 THEN '26–40'
-        WHEN Age BETWEEN 41 AND 55 THEN '41–55'
+        WHEN Age BETWEEN 18 AND 25 THEN '18â€“25'
+        WHEN Age BETWEEN 26 AND 40 THEN '26â€“40'
+        WHEN Age BETWEEN 41 AND 55 THEN '41â€“55'
         ELSE '56+'
     END
 ORDER BY CustomersCount DESC;
